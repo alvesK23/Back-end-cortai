@@ -1,0 +1,19 @@
+0008-12-2022 17:33:5101
+020001caxileBarber                                      04688081000115                                    gustavo@email.com                                 11954523874                                       
+020002Corta aí                                          92955364000143                                    cortaai@bandtec.com.br                            1140028922                                        
+020003Biel Cortes                                       18943422000166                                    biel@bandtec.com.br                               1180804004                                        
+020004SpTech                                            84131760000128                                    sptech@bandtec.com.br                             1140040800                                        
+020005PoliCortes                                        841317600001283                                   poli@gmail.com                                    1140040800                                        
+020006TopCortes                                         841317600001233                                   topcortes@gmail.com                               1140040833                                        
+020007SP Cuts                                           96904589000121                                    cuts@sptech.com                                   5625258326                                        
+020008Mela Cortes                                       76163058000118                                    mela@gmail.com                                    988634639                                         
+020009Braian Cortes                                     42781699000114                                    Braian@gmail.com                                  988634567                                         
+030001SP                                                Barueri                                           Alphaville                                        Al. Rio Negro                                     06454-000           
+030002SP                                                São Paulo                                         Pinheiros                                         R. Capri                                          05425-030           
+030003SP                                                São Paulo                                         Cerqueira César                                   R. Haddock Lobo                                   01414-001           
+030004SP                                                São Paulo                                         Sé                                                lado ímpar                                        01001-000           
+030005SP                                                São Paulo                                         Pq Birstol                                        Dr.Benedito Tolosa                                04193-020           
+030006SP                                                São Paulo                                         Pq Birstol                                        Rua Antônio Auge Garcia                           04193-110           
+030007SP                                                São Paulo                                         Vila Campanela                                    Rua Edward Félix de Moraes                        08220400            
+030008SP                                                São Paulo                                         Jardim Soares                                     Rua Samouna                                       08460230            
+010000000017
