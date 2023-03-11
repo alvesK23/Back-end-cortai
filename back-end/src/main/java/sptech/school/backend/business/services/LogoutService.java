@@ -1,4 +1,4 @@
-package sptech.school.backend.bussiness.services;
+package sptech.school.backend.business.services;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

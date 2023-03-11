@@ -1,4 +1,4 @@
-package sptech.school.backend.bussiness.services;
+package sptech.school.backend.business.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +18,7 @@ import sptech.school.backend.repositories.IUserRepository;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+
   private final IUserRepository repository;
   private final ITokenRepository tokenRepository;
   private final PasswordEncoder passwordEncoder;

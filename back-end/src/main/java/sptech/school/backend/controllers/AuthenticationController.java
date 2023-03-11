@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sptech.school.backend.comunication.request.AuthenticationRequest;
 import sptech.school.backend.comunication.response.AuthenticationResponse;
-import sptech.school.backend.bussiness.services.AuthenticationService;
+import sptech.school.backend.business.services.AuthenticationService;
 import sptech.school.backend.comunication.request.RegisterRequest;
 
 @RestController
