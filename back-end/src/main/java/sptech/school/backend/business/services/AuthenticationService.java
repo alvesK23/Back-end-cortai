@@ -5,6 +5,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import sptech.school.backend.business.exceptions.ForbiddenException;
 import sptech.school.backend.comunication.request.AuthenticationRequest;
 import sptech.school.backend.comunication.response.AuthenticationResponse;
 import sptech.school.backend.comunication.request.RegisterRequest;
@@ -27,8 +28,8 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
-        .firstname(request.getFirstname())
-        .lastname(request.getLastname())
+        .firstName(request.getFirstName())
+        .lastName(request.getLastName())
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.USER)
@@ -70,7 +71,7 @@ public class AuthenticationService {
   private void revokeAllUserTokens(User user) {
     var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
     if (validUserTokens.isEmpty())
-      return;
+      throw new ForbiddenException("you not have permission");
     validUserTokens.forEach(token -> {
       token.setExpired(true);
       token.setRevoked(true);
