@@ -1,0 +1,424 @@
+{
+	"info": {
+		"_postman_id": "e5371e77-6eae-42e2-8e82-eb82a260e8d3",
+		"name": "CortaAi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20301454"
+	},
+	"item": [
+		{
+			"name": "Responses",
+			"item": [
+				{
+					"name": "testSuccess",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/demo-controller",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"demo-controller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNYWxsb3J5MTJAZ21haWwuY29tIiwiaWF0IjoxNjc5MDA2NDY2LCJleHAiOjE2NzkwMDc5MDZ9.t82TXLuH9bIFpZk7SAma26r4XgbS7h9AY-QOPk2AqDU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/users/barbers",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"barbers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllByCity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/cities/rrr",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
+								"cities",
+								"rrr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllByDistrict",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/neighborhoods/a",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
+								"neighborhoods",
+								"a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requests",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var ddd = _.random(10, 99);\r",
+									"var aditionalNumber = _.random(9,9);\r",
+									"var firstNumbers = _.random(1000, 9999);\r",
+									"var lastNumbers = _.random(1000, 9999);\r",
+									"\r",
+									"var phoneNumberMy = ddd + \" \" + aditionalNumber + \" \" + firstNumbers + \"-\" + lastNumbers;\r",
+									"\r",
+									"pm.environment.set(\"phone\", phoneNumberMy);\r",
+									"\r",
+									"let email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+									"let password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+									"\r",
+									"postman.setGlobalVariable(\"EMAIL\", email);\r",
+									"postman.setGlobalVariable(\"PASSWORD\", password);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validate successfully request\", function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.be.withBody;\r",
+									"    pm.response.to.have.jsonBody(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/register",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login on API\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.withBody;\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.response.to.have.jsonBody(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZWxseTkwQGhvdG1haWwuY29tIiwiaWF0IjoxNjc5MTI4MzU2LCJleHAiOjE2NzkxMjk3OTZ9.vwZyj2ru0YLPIITFFa5phR_1TC_-vgja0jodCSw13Ek",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/authenticate",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MTA2NzgwLCJleHAiOjE2NzkxMDgyMjB9.qTZKfHNpr_nwbx4XaXQE8lSEmC4zb8GhWY0nbjDWuRo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"firstName\": \"{{$randomFirstName}}\",\r\n\t\"lastName\": \"{{$randomLastName}}\",\r\n\t\"email\": \"{{$randomEmail}}\",\r\n\t\"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/users/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MDM4NzYxLCJleHAiOjE2NzkwNDAyMDF9.4wOMvN0CaDksmjnCgt0wVTm0eA2WfRQeSZkKY6pu2lo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/2",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "postAddress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var number = _.random(1, 9999);\r",
+									"\r",
+									"pm.environment.set(\"number\", number);\r",
+									"\r",
+									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
+									"\r",
+									"var region = _.random(01, 99);\r",
+									"var subRegion = _.random(10000,99999);\r",
+									"var streetCode = _.random(100, 999);\r",
+									"\r",
+									"var zip = region + subRegion + \"-\" + streetCode;\r",
+									"\r",
+									"pm.environment.set(\"zip\", zip);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUYWQyN0Bob3RtYWlsLmNvbSIsImlhdCI6MTY3OTEyNjY1MSwiZXhwIjoxNjc5MTI4MDkxfQ.v05YcFHUdIWN4QQ5mX-nFeDe9NqM-wBOFjOMoD02mLw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/addresses",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "_URL",
+			"value": "http://localhost:8080/api/v1/",
+			"type": "string"
+		}
+	]
+}

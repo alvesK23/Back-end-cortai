@@ -9,9 +9,11 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserResponse {
+public class AddressResponse {
 
-    private String company;
-    private String phone;
-    private String email;
+    private String zip;
+    private String number;
+    private String street;
+    private String district;
+    private String city;
 }
