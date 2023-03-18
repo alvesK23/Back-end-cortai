@@ -29,8 +29,8 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue
   private Integer id;
-  private String firstName;
-  private String lastName;
+  private String company;
+  private String phone;
   private String email;
   private String password;
 
@@ -39,6 +39,9 @@ public class User implements UserDetails {
 
   @OneToMany(mappedBy = "user")
   private List<Token> tokens;
+
+  @OneToMany(mappedBy = "user")
+  private List<Address> addresses;
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {

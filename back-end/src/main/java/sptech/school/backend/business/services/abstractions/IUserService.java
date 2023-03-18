@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IUserService {
 
     List<UserResponse> findAll() throws NotContextException;
-    Optional<UserResponse> findByFirstName(String firstName);
+    Optional<UserResponse> findByCompany(String company);
     Optional<UserResponse> update(Integer id, RegisterRequest request);
     void delete(Integer id);
 }

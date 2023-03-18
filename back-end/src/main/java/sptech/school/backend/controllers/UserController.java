@@ -28,7 +28,7 @@ public class UserController {
 
     @GetMapping("/{name}")
     ResponseEntity<Optional<UserResponse>> findById(@PathVariable String name) {
-        return ResponseEntity.status(HttpStatus.OK).body(service.findByFirstName(name));
+        return ResponseEntity.status(HttpStatus.OK).body(service.findByCompany(name));
     }
 
     @PutMapping("/{id}")

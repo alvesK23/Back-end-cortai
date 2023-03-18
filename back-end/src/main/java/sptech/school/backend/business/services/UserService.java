@@ -35,8 +35,8 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<UserResponse> findByFirstName(String firstName) {
-        var user = this.repository.findByFirstName(firstName);
+    public Optional<UserResponse> findByCompany(String company) {
+        var user = this.repository.findByCompany(company);
 
         var response = modelMapper.map(user, UserResponse.class);
 
