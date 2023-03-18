@@ -28,8 +28,13 @@ public class AuthenticationService {
 
   public AuthenticationResponse register(RegisterRequest request) {
     var user = User.builder()
+<<<<<<< HEAD
             .company(request.getCompany())
         .phone(request.getPhone())
+=======
+        .firstName(request.getFirstName())
+        .lastName(request.getLastName())
+>>>>>>> ea52407318cc7f4be8ae116b977f313211f3ca6b
         .email(request.getEmail())
         .password(passwordEncoder.encode(request.getPassword()))
         .role(Role.USER)
