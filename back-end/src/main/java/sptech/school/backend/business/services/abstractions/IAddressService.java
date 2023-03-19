@@ -9,9 +9,8 @@ import java.util.Optional;
 public interface IAddressService {
 
     AddressResponse save(AddressRequest request);
+    Optional<AddressResponse> findById(Integer id);
     Optional<AddressResponse> update(Integer id, AddressRequest request);
-    void delete(Integer id);
-    List<AddressResponse> findAll();
     List<AddressResponse> findAllByCity(String city);
     List<AddressResponse> findAllByDistrict(String district);
 }
