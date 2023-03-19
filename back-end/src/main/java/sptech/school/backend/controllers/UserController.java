@@ -26,13 +26,9 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/barbers/{name}")
     ResponseEntity<Optional<UserResponse>> findById(@PathVariable String name) {
-<<<<<<< HEAD
         return ResponseEntity.status(HttpStatus.OK).body(service.findByCompany(name));
-=======
-        return ResponseEntity.status(HttpStatus.OK).body(service.findByFirstName(name));
->>>>>>> ea52407318cc7f4be8ae116b977f313211f3ca6b
     }
 
     @PutMapping("/{id}")
@@ -44,5 +40,10 @@ public class UserController {
     ResponseEntity<Void> delete(@PathVariable Integer id) {
         this.service.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/{id}")
+    ResponseEntity<Optional<UserResponse>> findById(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.findById(id));
     }
 }

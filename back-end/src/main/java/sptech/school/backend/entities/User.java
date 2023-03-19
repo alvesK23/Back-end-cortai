@@ -29,13 +29,8 @@ public class User implements UserDetails {
   @Id
   @GeneratedValue
   private Integer id;
-<<<<<<< HEAD
   private String company;
   private String phone;
-=======
-  private String firstName;
-  private String lastName;
->>>>>>> ea52407318cc7f4be8ae116b977f313211f3ca6b
   private String email;
   private String password;
 

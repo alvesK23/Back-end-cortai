@@ -1,22 +1,10 @@
 package sptech.school.backend.repositories;
 
-<<<<<<< HEAD
 
 import java.util.List;
 import java.util.Optional;
 
 import jakarta.transaction.Transactional;
-=======
-import java.awt.*;
-import java.lang.annotation.Native;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-
-import jakarta.persistence.NamedQuery;
-import jakarta.transaction.Transactional;
-import org.hibernate.annotations.NamedNativeQuery;
->>>>>>> ea52407318cc7f4be8ae116b977f313211f3ca6b
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -27,11 +15,7 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 
   Optional<User> findByEmail(String email);
 
-<<<<<<< HEAD
   Optional<User> findByCompany(String company);
-=======
-  Optional<User> findByFirstName(String firstName);
->>>>>>> ea52407318cc7f4be8ae116b977f313211f3ca6b
 
   List<User> findAllByRole(Role role);
 

@@ -9,6 +9,7 @@ import sptech.school.backend.comunication.request.AddressRequest;
 import sptech.school.backend.comunication.response.AddressResponse;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/auth/addresses")
@@ -31,5 +32,16 @@ public class AddressController {
     @GetMapping("/neighborhoods/{district}")
     ResponseEntity<List<AddressResponse>> findAllByDistrict(@PathVariable String district) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAllByDistrict(district));
+    }
+
+    @GetMapping("/{id}")
+    ResponseEntity<Optional<AddressResponse>> findById(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.findById(id));
+    }
+
+    @PutMapping("/{id}")
+    ResponseEntity<Optional<AddressResponse>> updateById(@PathVariable Integer id,
+                                                         @RequestBody AddressRequest request) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.service.update(id, request));
     }
 }

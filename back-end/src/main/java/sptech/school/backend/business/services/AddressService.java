@@ -3,13 +3,13 @@ package sptech.school.backend.business.services;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import sptech.school.backend.business.exceptions.ResourceNotFoundException;
 import sptech.school.backend.business.services.abstractions.IAddressService;
 import sptech.school.backend.comunication.request.AddressRequest;
 import sptech.school.backend.comunication.response.AddressResponse;
 import sptech.school.backend.entities.Address;
 import sptech.school.backend.repositories.IAddressRepository;
 
-import javax.naming.NotContextException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -23,26 +23,33 @@ public class AddressService implements IAddressService {
 
     @Override
     public AddressResponse save(AddressRequest request) {
-        var address = mapper.map(request, Address.class);
+        var address = this.mapper.map(request, Address.class);
         this.repository.save(address);
 
-        return mapper.map(address, AddressResponse.class);
+        return this.mapper.map(address, AddressResponse.class);
+    }
+
+    @Override
+    public Optional<AddressResponse> findById(Integer id) {
+        var address = this.repository.findById(id);
+        var response =  this.mapper.map(address, AddressResponse.class);
+
+        return Optional.of(response);
     }
 
     @Override
     public Optional<AddressResponse> update(Integer id, AddressRequest request) {
-        return Optional.empty();
+        var address = this.repository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("address not found"));
+
+        this.mapper.map(request, address);
+        this.repository.save(address);
+
+        var response = this.mapper.map(address, AddressResponse.class);
+
+        return Optional.of(response);
     }
 
-    @Override
-    public void delete(Integer id) {
-
-    }
-
-    @Override
-    public List<AddressResponse> findAll() {
-        return null;
-    }
 
     @Override
     public List<AddressResponse> findAllByCity(String city) {
@@ -67,6 +74,4 @@ public class AddressService implements IAddressService {
                 .map(this::toResponse)
                 .collect(Collectors.toList());
     }
-
-
 }
