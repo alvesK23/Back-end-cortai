@@ -10,33 +10,6 @@
 			"name": "GET",
 			"item": [
 				{
-					"name": "testSuccess",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{_URL}}/demo-controller",
-							"host": [
-								"{{_URL}}"
-							],
-							"path": [
-								"demo-controller"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "getAllBarbers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -88,15 +61,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{_URL}}/auth/addresses/cities/rrr",
+							"raw": "{{_URL}}/auth/users/barbers/cities/Virginia Beach",
 							"host": [
 								"{{_URL}}"
 							],
 							"path": [
 								"auth",
-								"addresses",
+								"users",
+								"barbers",
 								"cities",
-								"rrr"
+								"Virginia Beach"
 							]
 						}
 					},
@@ -118,15 +92,16 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{_URL}}/auth/addresses/neighborhoods/a",
+							"raw": "{{_URL}}/auth/users/barbers/neighborhoods/Swaziland",
 							"host": [
 								"{{_URL}}"
 							],
 							"path": [
 								"auth",
-								"addresses",
+								"users",
+								"barbers",
 								"neighborhoods",
-								"a"
+								"Swaziland"
 							]
 						}
 					},
@@ -162,39 +137,22 @@
 					"response": []
 				},
 				{
-					"name": "getAddressById",
+					"name": "gerBarbersByName",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{_URL}}/auth/addresses/1",
+							"raw": "{{_URL}}/auth/users/barbers/Towne Group",
 							"host": [
 								"{{_URL}}"
 							],
 							"path": [
 								"auth",
-								"addresses",
-								"1"
+								"users",
+								"barbers",
+								"Towne Group"
 							]
 						}
-					},
-					"response": []
-				},
-				{
-					"name": "gerBarbersByName",
-					"request": {
-						"method": "GET",
-						"header": []
 					},
 					"response": []
 				}
@@ -319,76 +277,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "postAddress",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						},
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"var number = _.random(1, 9999);\r",
-									"\r",
-									"pm.environment.set(\"number\", number);\r",
-									"\r",
-									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
-									"\r",
-									"var region = _.random(01, 99);\r",
-									"var subRegion = _.random(10000,99999);\r",
-									"var streetCode = _.random(100, 999);\r",
-									"\r",
-									"var zip = region + subRegion + \"-\" + streetCode;\r",
-									"\r",
-									"pm.environment.set(\"zip\", zip);\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{_URL}}/auth/addresses",
-							"host": [
-								"{{_URL}}"
-							],
-							"path": [
-								"auth",
-								"addresses"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -466,68 +354,6 @@
 							"path": [
 								"auth",
 								"users",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateAddress",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"var number = _.random(1, 9999);\r",
-									"\r",
-									"pm.environment.set(\"number\", number);\r",
-									"\r",
-									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
-									"\r",
-									"var region = _.random(01, 99);\r",
-									"var subRegion = _.random(10000,99999);\r",
-									"var streetCode = _.random(100, 999);\r",
-									"\r",
-									"var zip = region + subRegion + \"-\" + streetCode;\r",
-									"\r",
-									"pm.environment.set(\"zip\", zip);\r",
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
-									"type": "string"
-								}
-							]
-						},
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{_URL}}/auth/addresses/1",
-							"host": [
-								"{{_URL}}"
-							],
-							"path": [
-								"auth",
-								"addresses",
 								"1"
 							]
 						}
