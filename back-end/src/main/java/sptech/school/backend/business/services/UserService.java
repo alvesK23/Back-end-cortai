@@ -54,10 +54,26 @@ public class UserService implements IUserService {
     }
 
     @Override
+<<<<<<< HEAD
     public Optional<UpdateResponse> findByCompany(String company) {
         var user = this.repository.findByCompany(company);
 
         var response = this.modelMapper.map(user, UpdateResponse.class);
+=======
+    public Optional<UserResponse> findByCompany(String company) {
+        var user = this.repository.findByCompany(company);
+
+        var response = this.modelMapper.map(user, UserResponse.class);
+
+        return Optional.of(response);
+    }
+
+    @Override
+    public Optional<UserResponse> findById(Integer id) {
+        var user = this.repository.findById(id);
+
+        var response = this.modelMapper.map(user, UserResponse.class);
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 
         return Optional.of(response);
     }
@@ -97,7 +113,11 @@ public class UserService implements IUserService {
         this.modelMapper.map(request, user);
         this.repository.save(user);
 
+<<<<<<< HEAD
         var response = this.modelMapper.map(user, UpdateResponse.class);
+=======
+        var response = this.modelMapper.map(user, UserResponse.class);
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 
         return Optional.of(response);
     }

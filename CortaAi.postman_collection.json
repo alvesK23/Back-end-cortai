@@ -10,6 +10,36 @@
 			"name": "GET",
 			"item": [
 				{
+<<<<<<< HEAD
+=======
+					"name": "testSuccess",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/demo-controller",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"demo-controller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 					"name": "getAllBarbers",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -155,6 +185,62 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAddressById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/id",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gerBarbersByName",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			]
 		},
@@ -205,7 +291,11 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
+<<<<<<< HEAD
 							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"USER\"\r\n}",
+=======
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 							"options": {
 								"raw": {
 									"language": "json"
@@ -284,6 +374,7 @@
 			"name": "PUT",
 			"item": [
 				{
+<<<<<<< HEAD
 					"name": "updateUser",
 					"event": [
 						{
@@ -306,11 +397,21 @@
 									"pm.environment.set(\"phone\", phoneNumberMy);\r",
 									"pm.environment.set(\"zip\", zip);\r",
 									"pm.environment.set(\"number\", number);"
+=======
+					"name": "postAddress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 								],
 								"type": "text/javascript"
 							}
 						},
 						{
+<<<<<<< HEAD
 							"listen": "test",
 							"script": {
 								"exec": [
@@ -318,12 +419,127 @@
 									"    var regex = /^\\d{5}-\\d{3}$/;\r",
 									"    pm.expect(zip).to.match(regex);\r",
 									"});\r",
+=======
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var number = _.random(1, 9999);\r",
+									"\r",
+									"pm.environment.set(\"number\", number);\r",
+									"\r",
+									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
+									"\r",
+									"var region = _.random(01, 99);\r",
+									"var subRegion = _.random(10000,99999);\r",
+									"var streetCode = _.random(100, 999);\r",
+									"\r",
+									"var zip = region + subRegion + \"-\" + streetCode;\r",
+									"\r",
+									"pm.environment.set(\"zip\", zip);\r",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 									""
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+<<<<<<< HEAD
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MTA2NzgwLCJleHAiOjE2NzkxMDgyMjB9.qTZKfHNpr_nwbx4XaXQE8lSEmC4zb8GhWY0nbjDWuRo",
+=======
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+									"type": "string"
+								}
+							]
+						},
+<<<<<<< HEAD
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": {\r\n        \"zip\": \"{{zip}}\",\r\n        \"number\": \"{{number}}\",\r\n        \"street\": \"{{$randomStreetName}}\",\r\n        \"district\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\"\r\n    },\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"BARBER\"\r\n}",
+=======
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+<<<<<<< HEAD
+							"raw": "{{_URL}}/auth/users/1",
+=======
+							"raw": "{{_URL}}/auth/addresses",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+<<<<<<< HEAD
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MDM4NzYxLCJleHAiOjE2NzkwNDAyMDF9.4wOMvN0CaDksmjnCgt0wVTm0eA2WfRQeSZkKY6pu2lo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/2",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"2"
+=======
+								"addresses"
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "updateUser",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -339,7 +555,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": {\r\n        \"zip\": \"{{zip}}\",\r\n        \"number\": \"{{number}}\",\r\n        \"street\": \"{{$randomStreetName}}\",\r\n        \"district\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\"\r\n    },\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"BARBER\"\r\n}",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -354,6 +570,68 @@
 							"path": [
 								"auth",
 								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAddress",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var number = _.random(1, 9999);\r",
+									"\r",
+									"pm.environment.set(\"number\", number);\r",
+									"\r",
+									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
+									"\r",
+									"var region = _.random(01, 99);\r",
+									"var subRegion = _.random(10000,99999);\r",
+									"var streetCode = _.random(100, 999);\r",
+									"\r",
+									"var zip = region + subRegion + \"-\" + streetCode;\r",
+									"\r",
+									"pm.environment.set(\"zip\", zip);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
 								"1"
 							]
 						}
