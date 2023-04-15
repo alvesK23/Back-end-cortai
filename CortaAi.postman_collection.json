@@ -164,17 +164,27 @@
 				{
 					"name": "getAddressById",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{_URL}}/auth/addresses/id",
+							"raw": "{{_URL}}/auth/addresses/1",
 							"host": [
 								"{{_URL}}"
 							],
 							"path": [
 								"auth",
 								"addresses",
-								"id"
+								"1"
 							]
 						}
 					},
@@ -237,7 +247,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"USER\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -245,13 +255,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{_URL}}/auth/register",
+							"raw": "{{_URL}}/auth/users",
 							"host": [
 								"{{_URL}}"
 							],
 							"path": [
 								"auth",
-								"register"
+								"users"
 							]
 						}
 					},
@@ -387,6 +397,45 @@
 			"item": [
 				{
 					"name": "updateUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var ddd = _.random(10, 99);\r",
+									"var aditionalNumber = _.random(9,9);\r",
+									"var firstNumbers = _.random(1000, 9999);\r",
+									"var lastNumbers = _.random(1000, 9999);\r",
+									"\r",
+									"var number = _.random(10, 9999);\r",
+									"\r",
+									"var left = _.random(1111, 99999);\r",
+									"var right = _.random(10, 999);\r",
+									"var zip = left + \"-\" + right;\r",
+									"\r",
+									"var phoneNumberMy = ddd + \" \" + aditionalNumber + \" \" + firstNumbers + \"-\" + lastNumbers;\r",
+									"\r",
+									"pm.environment.set(\"phone\", phoneNumberMy);\r",
+									"pm.environment.set(\"zip\", zip);\r",
+									"pm.environment.set(\"number\", number);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"CEP é válido\", function() {\r",
+									"    var regex = /^\\d{5}-\\d{3}$/;\r",
+									"    pm.expect(zip).to.match(regex);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -402,7 +451,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": {\r\n        \"zip\": \"{{zip}}\",\r\n        \"number\": \"{{number}}\",\r\n        \"street\": \"{{$randomStreetName}}\",\r\n        \"district\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\"\r\n    },\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"BARBER\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

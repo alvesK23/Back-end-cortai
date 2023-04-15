@@ -3,12 +3,14 @@ package sptech.school.backend.business.services;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import sptech.school.backend.business.exceptions.ResourceNotFoundException;
 import sptech.school.backend.business.services.abstractions.IUserService;
 import sptech.school.backend.comunication.request.RegisterRequest;
+import sptech.school.backend.comunication.request.UpdateRequest;
+import sptech.school.backend.comunication.response.UpdateResponse;
 import sptech.school.backend.comunication.response.UserResponse;
 import sptech.school.backend.entities.User;
 import sptech.school.backend.entities.enums.Role;
+import sptech.school.backend.infrastructure.exceptions.NotFoundException;
 import sptech.school.backend.repositories.IUserRepository;
 
 import javax.naming.NotContextException;
@@ -24,8 +26,18 @@ public class UserService implements IUserService {
     private final IUserRepository repository;
 
     @Override
+    public Optional<UserResponse> register(RegisterRequest request) {
+        var user = modelMapper.map(request, User.class);
+        repository.save(user);
+
+        var response = modelMapper.map(user, UserResponse.class);
+
+        return Optional.of(response);
+    }
+
+    @Override
     public List<UserResponse> findAll() throws NotContextException {
-        var users = this.repository.findAllByRole(Role.ADMIN);
+        var users = this.repository.findAllByRole(Role.BARBER);
 
         if (users.isEmpty()) {
             throw new NotContextException("Not users are found");
@@ -63,14 +75,14 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<UserResponse> update(Integer id, RegisterRequest request) {
+    public Optional<UpdateResponse> update(Integer id, UpdateRequest request) {
         var user = this.repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
 
         this.modelMapper.map(request, user);
         this.repository.save(user);
 
-        var response = this.modelMapper.map(user, UserResponse.class);
+        var response = this.modelMapper.map(user, UpdateResponse.class);
 
         return Optional.of(response);
     }
@@ -78,9 +90,8 @@ public class UserService implements IUserService {
     @Override
     public void delete(Integer id) {
         var user = this.repository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new NotFoundException("User not found"));
 
-        this.repository.deleteUser(id);
         this.repository.deleteById(id);
     }
 }

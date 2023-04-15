@@ -7,23 +7,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "_address")
+@NoArgsConstructor
+@Embeddable
 public class Address {
 
-    @Id
-    @GeneratedValue
-    private Integer id;
     private String zip;
     private String number;
     private String street;
     private String district;
     private String city;
-
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
 }

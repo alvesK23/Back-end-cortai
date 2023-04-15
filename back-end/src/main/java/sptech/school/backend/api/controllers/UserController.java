@@ -1,12 +1,14 @@
-package sptech.school.backend.controllers;
+package sptech.school.backend.api.controllers;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import sptech.school.backend.business.services.abstractions.IUserService;
 import sptech.school.backend.comunication.request.RegisterRequest;
+import sptech.school.backend.comunication.request.UpdateRequest;
+import sptech.school.backend.comunication.response.UpdateResponse;
 import sptech.school.backend.comunication.response.UserResponse;
 
 import javax.naming.NotContextException;
@@ -20,7 +22,7 @@ public class UserController {
 
     private final IUserService service;
 
-    @PreAuthorize("hasRole('USER' or hasRole('ADMIN'))")
+
     @GetMapping("/barbers")
     ResponseEntity<List<UserResponse>> findAll() throws NotContextException {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
@@ -32,7 +34,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<Optional<UserResponse>> update(@PathVariable Integer id, @RequestBody RegisterRequest request) {
+    ResponseEntity<Optional<UpdateResponse>> update(@PathVariable Integer id, @RequestBody UpdateRequest request) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.update(id, request));
     }
 
@@ -45,5 +47,10 @@ public class UserController {
     @GetMapping("/{id}")
     ResponseEntity<Optional<UserResponse>> findById(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findById(id));
+    }
+
+    @PostMapping
+    ResponseEntity<Optional<UserResponse>> register(@Valid @RequestBody RegisterRequest request) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.service.register(request));
     }
 }
