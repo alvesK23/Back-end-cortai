@@ -24,7 +24,7 @@ public class User  {
   private String password;
 
   @Enumerated(EnumType.STRING)
-  private Role role = Role.BARBER;
+  private Role role = Role.USER;
 
   @Embedded
   private Address address;

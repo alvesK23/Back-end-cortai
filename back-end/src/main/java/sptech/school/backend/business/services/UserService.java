@@ -7,6 +7,7 @@ import sptech.school.backend.business.services.abstractions.IUserService;
 import sptech.school.backend.comunication.request.RegisterRequest;
 import sptech.school.backend.comunication.request.UpdateRequest;
 import sptech.school.backend.comunication.response.UpdateResponse;
+import sptech.school.backend.comunication.response.UpdateResponse;
 import sptech.school.backend.comunication.response.UserResponse;
 import sptech.school.backend.entities.User;
 import sptech.school.backend.entities.enums.Role;
@@ -14,6 +15,7 @@ import sptech.school.backend.infrastructure.exceptions.NotFoundException;
 import sptech.school.backend.repositories.IUserRepository;
 
 import javax.naming.NotContextException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,6 +30,11 @@ public class UserService implements IUserService {
     @Override
     public Optional<UserResponse> register(RegisterRequest request) {
         var user = modelMapper.map(request, User.class);
+
+        var password = user.getPassword();
+        var passwordEncoder = Base64.getEncoder().encode(password.getBytes());
+        user.setPassword(new String(passwordEncoder));
+
         repository.save(user);
 
         var response = modelMapper.map(user, UserResponse.class);
@@ -36,7 +43,7 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public List<UserResponse> findAll() throws NotContextException {
+    public List<UpdateResponse> findAll() throws NotContextException {
         var users = this.repository.findAllByRole(Role.BARBER);
 
         if (users.isEmpty()) {
@@ -47,31 +54,39 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<UserResponse> findByCompany(String company) {
+    public Optional<UpdateResponse> findByCompany(String company) {
         var user = this.repository.findByCompany(company);
 
-        var response = this.modelMapper.map(user, UserResponse.class);
+        var response = this.modelMapper.map(user, UpdateResponse.class);
 
         return Optional.of(response);
     }
 
     @Override
-    public Optional<UserResponse> findById(Integer id) {
-        var user = this.repository.findById(id);
+    public Optional<UpdateResponse> findByCity(String city) {
+        var user = this.repository.findAllByAddress_City(city);
 
-        var response = this.modelMapper.map(user, UserResponse.class);
+        var response = this.modelMapper.map(user, UpdateResponse.class);
 
         return Optional.of(response);
     }
 
-    private UserResponse toResponse(User entity) {
-        return modelMapper.map(entity, UserResponse.class);
+    @Override
+    public Optional<UpdateResponse> findByDistrict(String district) {
+        var user = this.repository.findAllByAddress_District(district);
+
+        var response = this.modelMapper.map(user, UpdateResponse.class);
+
+        return Optional.of(response);
     }
 
-    private List<UserResponse> toResponseList(List<User> list) {
-        return list.stream()
-                .map(this::toResponse)
-                .collect(Collectors.toList());
+    @Override
+    public Optional<UpdateResponse> findById(Integer id) {
+        var user = this.repository.findById(id);
+
+        var response = this.modelMapper.map(user, UpdateResponse.class);
+
+        return Optional.of(response);
     }
 
     @Override
@@ -93,5 +108,15 @@ public class UserService implements IUserService {
                 .orElseThrow(() -> new NotFoundException("User not found"));
 
         this.repository.deleteById(id);
+    }
+
+    private UpdateResponse toResponse(User entity) {
+        return modelMapper.map(entity, UpdateResponse.class);
+    }
+
+    private List<UpdateResponse> toResponseList(List<User> list) {
+        return list.stream()
+                .map(this::toResponse)
+                .collect(Collectors.toList());
     }
 }

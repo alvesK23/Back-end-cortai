@@ -22,15 +22,24 @@ public class UserController {
 
     private final IUserService service;
 
-
     @GetMapping("/barbers")
-    ResponseEntity<List<UserResponse>> findAll() throws NotContextException {
+    ResponseEntity<List<UpdateResponse>> findAll() throws NotContextException {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findAll());
     }
 
     @GetMapping("/barbers/{name}")
-    ResponseEntity<Optional<UserResponse>> findById(@PathVariable String name) {
+    ResponseEntity<Optional<UpdateResponse>> findByName(@PathVariable String name) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findByCompany(name));
+    }
+
+    @GetMapping("/barbers/neighborhoods/{district}")
+    ResponseEntity<Optional<UpdateResponse>> findByDistrict(@PathVariable String district) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findByDistrict(district));
+    }
+
+    @GetMapping("/barbers/cities/{city}")
+    ResponseEntity<Optional<UpdateResponse>> findByCity(@PathVariable String city) {
+        return ResponseEntity.status(HttpStatus.OK).body(service.findByCity(city));
     }
 
     @PutMapping("/{id}")
@@ -45,7 +54,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    ResponseEntity<Optional<UserResponse>> findById(@PathVariable Integer id) {
+    ResponseEntity<Optional<UpdateResponse>> findById(@PathVariable Integer id) {
         return ResponseEntity.status(HttpStatus.OK).body(this.service.findById(id));
     }
 

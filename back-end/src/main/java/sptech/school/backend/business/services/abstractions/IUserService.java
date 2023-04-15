@@ -12,9 +12,11 @@ import java.util.Optional;
 public interface IUserService {
 
     Optional<UserResponse> register(RegisterRequest request);
-    List<UserResponse> findAll() throws NotContextException;
-    Optional<UserResponse> findByCompany(String company);
-    Optional<UserResponse> findById(Integer id);
+    List<UpdateResponse> findAll() throws NotContextException;
+    Optional<UpdateResponse> findByCompany(String company);
+    Optional<UpdateResponse> findByCity(String city);
+    Optional<UpdateResponse> findByDistrict(String district);
+    Optional<UpdateResponse> findById(Integer id);
     Optional<UpdateResponse> update(Integer id, UpdateRequest request);
     void delete(Integer id);
 }
