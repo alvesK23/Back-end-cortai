@@ -1,0 +1,705 @@
+{
+	"info": {
+		"_postman_id": "e5371e77-6eae-42e2-8e82-eb82a260e8d3",
+		"name": "CortaAi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20301454"
+	},
+	"item": [
+		{
+			"name": "GET",
+			"item": [
+				{
+<<<<<<< HEAD
+=======
+					"name": "testSuccess",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/demo-controller",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"demo-controller"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+					"name": "getAllBarbers",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJNYWxsb3J5MTJAZ21haWwuY29tIiwiaWF0IjoxNjc5MDA2NDY2LCJleHAiOjE2NzkwMDc5MDZ9.t82TXLuH9bIFpZk7SAma26r4XgbS7h9AY-QOPk2AqDU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/users/barbers",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"barbers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAddressesByCity",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/barbers/cities/Virginia Beach",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"barbers",
+								"cities",
+								"Virginia Beach"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllAddressByDistrict",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJGcmVkYV9NYW50ZUB5YWhvby5jb20iLCJpYXQiOjE2NzkxMjY1MjAsImV4cCI6MTY3OTEyNzk2MH0.typ3i1ZSGt3iL6gbF061L7PfgI4EvGJYJG4WCtDDGqg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/barbers/neighborhoods/Swaziland",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"barbers",
+								"neighborhoods",
+								"Swaziland"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gerBarbersByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/barbers/Towne Group",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"barbers",
+								"Towne Group"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAddressById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/id",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
+								"id"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "gerBarbersByName",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var ddd = _.random(10, 99);\r",
+									"var aditionalNumber = _.random(9,9);\r",
+									"var firstNumbers = _.random(1000, 9999);\r",
+									"var lastNumbers = _.random(1000, 9999);\r",
+									"\r",
+									"var phoneNumberMy = ddd + \" \" + aditionalNumber + \" \" + firstNumbers + \"-\" + lastNumbers;\r",
+									"\r",
+									"pm.environment.set(\"phone\", phoneNumberMy);\r",
+									"\r",
+									"let email = pm.variables.replaceIn('{{$randomEmail}}');\r",
+									"let password = pm.variables.replaceIn('{{$randomPassword}}');\r",
+									"\r",
+									"postman.setGlobalVariable(\"EMAIL\", email);\r",
+									"postman.setGlobalVariable(\"PASSWORD\", password);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validate successfully request\", function(){\r",
+									"    pm.response.to.have.status(201);\r",
+									"    pm.response.to.be.withBody;\r",
+									"    pm.response.to.have.jsonBody(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+<<<<<<< HEAD
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"USER\"\r\n}",
+=======
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/users",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Login on API\", function() {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    pm.response.to.be.withBody;\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.response.to.have.jsonBody(\"token\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJUZWxseTkwQGhvdG1haWwuY29tIiwiaWF0IjoxNjc5MTI4MzU2LCJleHAiOjE2NzkxMjk3OTZ9.vwZyj2ru0YLPIITFFa5phR_1TC_-vgja0jodCSw13Ek",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/authenticate",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"authenticate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+<<<<<<< HEAD
+					"name": "updateUser",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var ddd = _.random(10, 99);\r",
+									"var aditionalNumber = _.random(9,9);\r",
+									"var firstNumbers = _.random(1000, 9999);\r",
+									"var lastNumbers = _.random(1000, 9999);\r",
+									"\r",
+									"var number = _.random(10, 9999);\r",
+									"\r",
+									"var left = _.random(1111, 99999);\r",
+									"var right = _.random(10, 999);\r",
+									"var zip = left + \"-\" + right;\r",
+									"\r",
+									"var phoneNumberMy = ddd + \" \" + aditionalNumber + \" \" + firstNumbers + \"-\" + lastNumbers;\r",
+									"\r",
+									"pm.environment.set(\"phone\", phoneNumberMy);\r",
+									"pm.environment.set(\"zip\", zip);\r",
+									"pm.environment.set(\"number\", number);"
+=======
+					"name": "postAddress",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+<<<<<<< HEAD
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"CEP é válido\", function() {\r",
+									"    var regex = /^\\d{5}-\\d{3}$/;\r",
+									"    pm.expect(zip).to.match(regex);\r",
+									"});\r",
+=======
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var number = _.random(1, 9999);\r",
+									"\r",
+									"pm.environment.set(\"number\", number);\r",
+									"\r",
+									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
+									"\r",
+									"var region = _.random(01, 99);\r",
+									"var subRegion = _.random(10000,99999);\r",
+									"var streetCode = _.random(100, 999);\r",
+									"\r",
+									"var zip = region + subRegion + \"-\" + streetCode;\r",
+									"\r",
+									"pm.environment.set(\"zip\", zip);\r",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+<<<<<<< HEAD
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MTA2NzgwLCJleHAiOjE2NzkxMDgyMjB9.qTZKfHNpr_nwbx4XaXQE8lSEmC4zb8GhWY0nbjDWuRo",
+=======
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+									"type": "string"
+								}
+							]
+						},
+<<<<<<< HEAD
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": {\r\n        \"zip\": \"{{zip}}\",\r\n        \"number\": \"{{number}}\",\r\n        \"street\": \"{{$randomStreetName}}\",\r\n        \"district\": \"{{$randomCountry}}\",\r\n        \"city\": \"{{$randomCity}}\"\r\n    },\r\n\t\"email\": \"{{EMAIL}}\",\r\n    \"password\": \"{{PASSWORD}}\",\r\n    \"role\": \"BARBER\"\r\n}",
+=======
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+<<<<<<< HEAD
+							"raw": "{{_URL}}/auth/users/1",
+=======
+							"raw": "{{_URL}}/auth/addresses",
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+<<<<<<< HEAD
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MDM4NzYxLCJleHAiOjE2NzkwNDAyMDF9.4wOMvN0CaDksmjnCgt0wVTm0eA2WfRQeSZkKY6pu2lo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/2",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"2"
+=======
+								"addresses"
+>>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PUT",
+			"item": [
+				{
+					"name": "updateUser",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MTA2NzgwLCJleHAiOjE2NzkxMDgyMjB9.qTZKfHNpr_nwbx4XaXQE8lSEmC4zb8GhWY0nbjDWuRo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"company\": \"{{$randomCompanyName}}\",\r\n\t\"phone\": \"{{phone}}\",\r\n    \"address\": null,\r\n\t\"email\": \"{{EMAIL}}\",\r\n  \"password\": \"{{PASSWORD}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/users/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAddress",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var number = _.random(1, 9999);\r",
+									"\r",
+									"pm.environment.set(\"number\", number);\r",
+									"\r",
+									"// (\\d{2}[.]?\\d{3})[-]?(\\d{3}) - 01414-001\r",
+									"\r",
+									"var region = _.random(01, 99);\r",
+									"var subRegion = _.random(10000,99999);\r",
+									"var streetCode = _.random(100, 999);\r",
+									"\r",
+									"var zip = region + subRegion + \"-\" + streetCode;\r",
+									"\r",
+									"pm.environment.set(\"zip\", zip);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJKYWVkZW40OUBnbWFpbC5jb20iLCJpYXQiOjE2NzkyMDk0OTQsImV4cCI6MTY3OTIxMDkzNH0.zxlZp_XFNUu6kKy2Wz6jETJMOPzo471YtdmAeP3p0vM\"",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"zip\": \"{{zip}}\",\r\n    \"number\": \"{{number}}\",\r\n    \"street\": \"{{$randomStreetName}}\",\r\n    \"district\": \"{{$randomFirstName}}\",\r\n    \"city\": \"{{$randomCity}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{_URL}}/auth/addresses/1",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"addresses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"item": [
+				{
+					"name": "deleteUserById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJCcmFuZHluLlBmYW5lcnN0aWxsQGdtaWwuY29tIiwiaWF0IjoxNjc5MDM4NzYxLCJleHAiOjE2NzkwNDAyMDF9.4wOMvN0CaDksmjnCgt0wVTm0eA2WfRQeSZkKY6pu2lo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{_URL}}/auth/users/2",
+							"host": [
+								"{{_URL}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "_URL",
+			"value": "http://localhost:8080/api/v1/",
+			"type": "string"
+		}
+	]
+}
