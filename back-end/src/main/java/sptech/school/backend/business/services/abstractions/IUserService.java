@@ -11,7 +11,6 @@ import java.util.Optional;
 
 public interface IUserService {
 
-<<<<<<< HEAD
     Optional<UserResponse> register(RegisterRequest request);
     List<UpdateResponse> findAll() throws NotContextException;
     Optional<UpdateResponse> findByCompany(String company);
@@ -19,11 +18,5 @@ public interface IUserService {
     Optional<UpdateResponse> findByDistrict(String district);
     Optional<UpdateResponse> findById(Integer id);
     Optional<UpdateResponse> update(Integer id, UpdateRequest request);
-=======
-    List<UserResponse> findAll() throws NotContextException;
-    Optional<UserResponse> findByCompany(String company);
-    Optional<UserResponse> findById(Integer id);
-    Optional<UserResponse> update(Integer id, RegisterRequest request);
->>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
     void delete(Integer id);
 }

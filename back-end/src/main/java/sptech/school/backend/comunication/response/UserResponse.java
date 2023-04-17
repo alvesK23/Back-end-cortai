@@ -13,6 +13,5 @@ public class UserResponse {
 
     private String company;
     private String phone;
-    private AddressResponse address;
     private String email;
 }

@@ -21,11 +21,6 @@ public class RegisterRequest {
   @Size(max = 14, message = "max 18 characters required")
   @Pattern(regexp = "^\\d{2} \\d \\d{4}-\\d{4}$", message = "invalid phone")
   private String phone;
-<<<<<<< HEAD
-=======
-
-  private AddressRequest address;
->>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 
   @NotBlank(message = "Email is required")
   @Email(message = "invalid email address")

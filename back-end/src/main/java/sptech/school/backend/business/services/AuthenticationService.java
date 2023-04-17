@@ -22,27 +22,9 @@ public class AuthenticationService implements IAuthenticationService {
     private final ModelMapper modelMapper = new ModelMapper();
     private final IUserRepository repository;
 
-<<<<<<< HEAD
     @Override
     public Optional<AuthenticationResponse> authenticate(AuthenticationRequest request) {
         var user = modelMapper.map(request, User.class);
-=======
-  public AuthenticationResponse register(RegisterRequest request) {
-    var user = User.builder()
-            .company(request.getCompany())
-        .phone(request.getPhone())
-        .email(request.getEmail())
-        .password(passwordEncoder.encode(request.getPassword()))
-        .role(Role.USER)
-        .build();
-    var savedUser = repository.save(user);
-    var jwtToken = jwtService.generateToken(user);
-    saveUserToken(savedUser, jwtToken);
-    return AuthenticationResponse.builder()
-        .token(jwtToken)
-        .build();
-  }
->>>>>>> d5a90a1f1c6fc7d45f5bb3fd49cc34d4d83ccb4d
 
         var optUser= repository.findByEmail(user.getEmail());
         var response = modelMapper.map(optUser, AuthenticationResponse.class);
