@@ -7,7 +7,6 @@ import sptech.school.backend.business.services.abstractions.IUserService;
 import sptech.school.backend.comunication.request.RegisterRequest;
 import sptech.school.backend.comunication.request.UpdateRequest;
 import sptech.school.backend.comunication.response.UpdateResponse;
-import sptech.school.backend.comunication.response.UpdateResponse;
 import sptech.school.backend.comunication.response.UserResponse;
 import sptech.school.backend.entities.User;
 import sptech.school.backend.entities.enums.Role;
@@ -55,7 +54,7 @@ public class UserService implements IUserService {
 
     @Override
     public Optional<UpdateResponse> findByCompany(String company) {
-        var user = this.repository.findByCompany(company);
+        var user = this.repository.findByName(company);
 
         var response = this.modelMapper.map(user, UpdateResponse.class);
 

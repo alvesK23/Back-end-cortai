@@ -18,7 +18,7 @@ public class UpdateRequest {
 
     @NotBlank(message = "name is required")
     @Size(min = 3, message = "min 3 characters required")
-    private String company;
+    private String name;
 
     @NotBlank(message = "phone is required")
     @Size(min = 9, message = "min 9 characters required")
