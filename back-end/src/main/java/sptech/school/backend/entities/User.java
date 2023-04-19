@@ -18,7 +18,7 @@ public class User  {
   @Id
   @GeneratedValue
   private Integer id;
-  private String company;
+  private String name;
   private String phone;
   private String email;
   private String password;

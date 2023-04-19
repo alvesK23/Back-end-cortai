@@ -12,7 +12,7 @@ import sptech.school.backend.entities.enums.Role;
 @NoArgsConstructor
 public class UpdateResponse {
 
-    private String company;
+    private String name;
     private String phone;
     private AddressResponse address;
     private String email;
