@@ -62,21 +62,17 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public Optional<UpdateResponse> findByCity(String city) {
-        var user = this.repository.findAllByAddress_City(city);
+    public List<UpdateResponse> findByCity(String city) {
+        var users = this.repository.findAllByAddress_City(city);
 
-        var response = this.modelMapper.map(user, UpdateResponse.class);
-
-        return Optional.of(response);
+        return toResponseList(users);
     }
 
     @Override
-    public Optional<UpdateResponse> findByDistrict(String district) {
-        var user = this.repository.findAllByAddress_District(district);
+    public List<UpdateResponse> findByDistrict(String district) {
+        var users = this.repository.findAllByAddress_District(district);
 
-        var response = this.modelMapper.map(user, UpdateResponse.class);
-
-        return Optional.of(response);
+        return toResponseList(users);
     }
 
     @Override

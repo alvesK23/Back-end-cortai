@@ -33,12 +33,12 @@ public class UserController {
     }
 
     @GetMapping("/barbers/neighborhoods/{district}")
-    ResponseEntity<Optional<UpdateResponse>> findByDistrict(@PathVariable String district) {
+    ResponseEntity<List<UpdateResponse>> findByDistrict(@PathVariable String district) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findByDistrict(district));
     }
 
     @GetMapping("/barbers/cities/{city}")
-    ResponseEntity<Optional<UpdateResponse>> findByCity(@PathVariable String city) {
+    ResponseEntity<List<UpdateResponse>> findByCity(@PathVariable String city) {
         return ResponseEntity.status(HttpStatus.OK).body(service.findByCity(city));
     }
 

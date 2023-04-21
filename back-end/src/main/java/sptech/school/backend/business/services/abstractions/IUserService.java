@@ -14,8 +14,8 @@ public interface IUserService {
     Optional<UserResponse> register(RegisterRequest request);
     List<UpdateResponse> findAll() throws NotContextException;
     Optional<UpdateResponse> findByCompany(String company);
-    Optional<UpdateResponse> findByCity(String city);
-    Optional<UpdateResponse> findByDistrict(String district);
+    List<UpdateResponse> findByCity(String city);
+    List<UpdateResponse> findByDistrict(String district);
     Optional<UpdateResponse> findById(Integer id);
     Optional<UpdateResponse> update(Integer id, UpdateRequest request);
     void delete(Integer id);
