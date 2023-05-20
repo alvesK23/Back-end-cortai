@@ -13,4 +13,5 @@ import sptech.school.backend.entities.enums.Role;
 public class AuthenticationResponse {
 
     private Role role;
+    private String name;
 }
