@@ -16,8 +16,6 @@ import sptech.school.backend.entities.enums.Role;
 @NoArgsConstructor
 public class UpdateRequest {
 
-    private Integer id;
-
     @NotBlank(message = "name is required")
     @Size(min = 3, message = "min 3 characters required")
     private String name;
