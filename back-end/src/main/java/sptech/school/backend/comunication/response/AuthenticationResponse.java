@@ -12,6 +12,7 @@ import sptech.school.backend.entities.enums.Role;
 @NoArgsConstructor
 public class AuthenticationResponse {
 
+    private Integer id;
     private Role role;
     private String name;
 }

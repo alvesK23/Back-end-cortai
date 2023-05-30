@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class RegisterRequest {
 
+  private Integer id;
+
   @NotBlank(message = "name is required")
   @Size(min = 3, message = "min 3 characters required")
   private String name;

@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddressResponse {
 
+    private Integer id;
     private String zip;
     private String number;
     private String street;

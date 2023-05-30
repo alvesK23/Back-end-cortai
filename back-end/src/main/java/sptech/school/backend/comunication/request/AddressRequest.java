@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 public class AddressRequest {
 
+    private Integer id;
     @NotBlank
     @Pattern(regexp = "^\\d{5}-\\d{3}$", message = "insert a valid zip")
     private String zip;
