@@ -12,6 +12,7 @@ import sptech.school.backend.infrastructure.exceptions.NotFoundException;
 import sptech.school.backend.repositories.IUserRepository;
 
 import javax.swing.text.html.Option;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Optional;
 
@@ -26,15 +27,17 @@ public class AuthenticationService implements IAuthenticationService {
     public Optional<AuthenticationResponse> authenticate(AuthenticationRequest request) {
         var user = modelMapper.map(request, User.class);
 
-        var optUser= repository.findByEmail(user.getEmail());
-        var response = modelMapper.map(optUser, AuthenticationResponse.class);
+        var optUser = repository.findByEmail(user.getEmail());
 
-        if (!optUser.isPresent()) {
+        if (optUser.isEmpty()) {
             throw new NotFoundException("Usuário não encontrado");
         }
 
-        if (optUser.isPresent() && optUser.get().getPassword()
-                .equals(Base64.getEncoder().encodeToString(request.getPassword().getBytes()))) {
+        String encodedPassword = Base64.getEncoder().encodeToString(request.getPassword().getBytes(StandardCharsets.UTF_8));
+        String encodedCurrentPassword = Base64.getEncoder().encodeToString(user.getPassword().getBytes(StandardCharsets.UTF_8));
+
+        if (encodedPassword.equals(encodedCurrentPassword)) {
+            var response = modelMapper.map(optUser.get(), AuthenticationResponse.class);
             return Optional.of(response);
         }
 
